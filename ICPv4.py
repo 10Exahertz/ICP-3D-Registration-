@@ -133,12 +133,12 @@ while f < max_iterations and diffE_p > RMSE_min:
     #print(H)
     U,s,Vt = np.linalg.svd(H)
     R_rotate = np.dot(Vt.T,U.T)
-    R_rotate = np.dot(U.T,Vt.T)
+    R_rotate = np.dot(U,Vt)
 #    R_rotate = ([[0,0,1],
 #                 [1,0,0],
 #                 [0,1,0]])
     R_rotate = np.matrix(R_rotate)
-    R_rotate_Final = np.dot(R_rotate,R_rotate_Final.T)
+    R_rotate_Final = np.dot(R_rotate,R_rotate_Final)
     print("R:",R_rotate)
     #print("Det:",np.linalg.det(R_rotate))
     EE = np.dot(R_rotate,H)
